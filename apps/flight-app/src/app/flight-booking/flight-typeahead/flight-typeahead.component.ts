@@ -18,7 +18,19 @@ export class FlightTypeaheadComponent implements OnInit, OnDestroy {
   flights$: Observable<Flight[]>;
   loading: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+    const parameters = 'meine parameter';
+    const headers = 'meine header daten';
+
+    const a: {
+      params: string,
+      headers: string
+    } = {
+      params: parameters,
+      headers
+    };
+  }
 
   ngOnInit(): void {
     //this.rxjsDemo();
