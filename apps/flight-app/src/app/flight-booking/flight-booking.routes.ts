@@ -11,6 +11,11 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
     component: FlightBookingComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'flight-search',
+        pathMatch: 'full'
+      },
+      {
         path: 'flight-search',
         component: FlightSearchComponent
       },
