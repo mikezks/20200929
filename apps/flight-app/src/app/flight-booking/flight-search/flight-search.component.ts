@@ -34,7 +34,7 @@ export class FlightSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.flights$ = this.store.pipe(select(state => state.flightBooking.flights));
+    this.flights$ = this.store.pipe(select(fromFlightBooking.selectFlights));
   }
 
   search(): void {
@@ -43,12 +43,19 @@ export class FlightSearchComponent implements OnInit {
     /* this.flightService
       .load(this.from, this.to, this.urgent); */
 
-    this.flightService.find(this.from, this.to)
+    /* this.flightService.find(this.from, this.to)
       .subscribe(
         flights => this.store.dispatch(
           fromFlightBooking.flightsLoaded({ flights })
         )
-      );
+      ); */
+
+    this.store.dispatch(
+      fromFlightBooking.flightsLoad({
+        from: this.from,
+        to: this.to
+      })
+    );
   }
 
   delay(): void {
